@@ -6,8 +6,10 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- this is my comment -->
     <h1>
-         Welcom to my Site!
+        <%= locals.user || "Please log in"%>
     </h1>
+    <p><a href="/users">User Page</a></p>
 </body>
 </html>
