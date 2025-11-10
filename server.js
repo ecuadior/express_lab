@@ -1,6 +1,10 @@
 const express = require('express');
+const userRouter = require('./routes/users');
+const postRouter = require('./routes/posts');
 const app = express(); //Calling this function set up server
 app.set('view engine', 'ejs');
+app.use('/users', userRouter);
+app.use('/posts',postRouter);
 
 app.get('/',(req,res)=> //route 
     {
@@ -10,15 +14,5 @@ app.get('/',(req,res)=> //route
         //res.download('server.js'); start donwload when user refresh
     });// this function will run whne someone go to the root folder
 
-    //creating another pages in the website
-app.get('/users',(req,res)=> 
-{
-    res.send('User List');
-
-});  
-app.get('/users/new',(req, res)=>
-{
-    res.send('New User Form');
-}); 
 app.listen(3030);//port im running at 
 
