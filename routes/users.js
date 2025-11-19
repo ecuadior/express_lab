@@ -5,23 +5,34 @@ const router = express.Router();
 router.get('/',(req,res)=> 
 {
     // res.send('User List');
-    res.render(`users/list`, {users:users});
+    res.render('users/list', { users: users });
 });  
-router.get('/new',(req, res)=>
+router.get('/new',(req,res)=>
 {
-    res.send('New User Form');
-}); 
+    res.render('users/new', {firstName: "ENter Name"});
+});
+// router.get('/new',(req, res)=>
+// {
+//     res.send('New User Form');
+// }); 
 
 router.post('/',(req,res)=>{
-    //res.send("User Created!"); Commenedt out so it continues the function
+    res.send("User Created!"); 
     const firstName = req.body.firstName;
-    const isValid =firstName !=="";//Check if they are there,added
+    const lastName = req.body.lastName;
+    const gender = req.body.gender;
+    const age = req.body.age;
+    const isValid = firstName != "" && lastName != "" && age != 0;//Check if they are there,added
     if(isValid)
     {
-        console.log(`Adding User: ${firstName}`);
-        users.push({name:firstName});
-        console.log(`New Set of Users: ${users}`);
-        res.send("User Created!");
+        console.log(`Adding User ${firstName}`);
+        users.push({
+            firstName:firstName,
+            lastName:lastName,
+            gender:gender,
+            age:age,
+        });
+        console.log("New Set of Users: "+ `${users}`);
     }
     else{
         console.log("Eroor adding user!");
@@ -39,8 +50,16 @@ router.route("/:id").get((req,res)=>{
 }).put((req,res)=>{
     res.send(`Updating user with id: ${req.params.id}`);
 });
-const users = [{name:"George"},{name:"Yesina"}];
-router.param("id",(req, res, next, id)=>{
+const users = [
+    {
+        firstName:"Tony",
+        lastName: "yio",
+        gender:"Male",
+        age: 23,
+    }
+
+];
+router.param('id',(req, res, next, id)=>{
     console.log(`Accesing user #${id}`);
     next();
 });

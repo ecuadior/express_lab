@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <form action = "/users" method="post">
-        <input type="text" name="firstName" value="<%=locals.firstName%>">
-        <button type="submit">Submit</button>
 
+<body>
+    <form action="/users" method="post">
+        <fieldset>
+            <legend>Name</legend>
+        <label>
+            First Name<input type="text" name="firstName" value="<%= locals.firstName%>">
+        </label>
+        <br>
+        <label>
+            Last Name<input type="text" name="firstName" value="<%= locals.lastName%>">
+        </label>
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <legend>Gender</legend>
+        <label>
+            Male<input type="radio" name="gender">
+        </label>
+        <label>
+            Female<input type="radio" name="gender">
+        </label>
+        </fieldset>
+        <br>
+
+        <label>
+            Age<input type="number" name="age">
+        </label>
+
+        <br>
+        <button type="submit">Submit</button>
     </form>
+
 </body>
+
 </html>
