@@ -27,12 +27,12 @@ router.post('/',(req,res)=>{
     {
         console.log(`Adding User ${firstName}`);
         users.push({
-            firstName:firstName,
-            lastName:lastName,
-            gender:gender,
-            age:age,
+            firstName: firstName,
+            lastName: lastName,
+            gender: gender,
+            age: age,
         });
-        console.log("New Set of Users: "+ `${users}`);
+        console.log("New Set of Users: " + `${users}`);
     }
     else{
         console.log("Eroor adding user!");
